@@ -1,3 +1,9 @@
-CanvasJSChart {
-  margin: 5%;
+.display-block {
+  display: block;
+}
+.display-none {
+  display: none;
+}
+#chart {
+  margin-top: 2%;
 }
