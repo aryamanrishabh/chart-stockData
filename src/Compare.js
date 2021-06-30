@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import Table from "./Table";
 
 const Compare = () => {
-  const [comp, setComp] = useState(false);
-
   const [open1, setOpen1] = useState(0);
   const [close1, setClose1] = useState(0);
   const [high1, setHigh1] = useState(0);
@@ -45,8 +43,6 @@ const Compare = () => {
     setHigh2(timedatatwo[datetwo][p2]);
     setLow2(timedatatwo[datetwo][p3]);
     setClose2(timedatatwo[datetwo][p4]);
-
-    setComp(true);
   }
 
   useEffect(() => {

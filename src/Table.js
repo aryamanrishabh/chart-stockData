@@ -10,9 +10,8 @@ const Table = ({
   close1,
   close2,
 }) => {
-
   return (
-    <table className="table" id={comp ? "" : "display-none"}>
+    <table className="table">
       <thead className="thead-dark">
         <tr>
           <th scope="col"></th>
@@ -23,23 +22,23 @@ const Table = ({
       <tbody>
         <tr>
           <th scope="row">Open</th>
-          <td>{open1}</td>
-          <td>{open2}</td>
+          <td>{open1 ? `$${open1}` : "-"}</td>
+          <td>{open2 ? `$${open2}` : "-"}</td>
         </tr>
         <tr>
           <th scope="row">High</th>
-          <td>{high1}</td>
-          <td>{high2}</td>
+          <td>{high1 ? `$${high1}` : "-"}</td>
+          <td>{high2 ? `$${high2}` : "-"}</td>
         </tr>
         <tr>
           <th scope="row">Low</th>
-          <td>{low1}</td>
-          <td>{low2}</td>
+          <td>{low1 ? `$${low1}` : "-"}</td>
+          <td>{low2 ? `$${low2}` : "-"}</td>
         </tr>
         <tr>
           <th scope="row">Close</th>
-          <td>{close1}</td>
-          <td>{close2}</td>
+          <td>{close1 ? `$${close1}` : "-"}</td>
+          <td>{close2 ? `$${close2}` : "-"}</td>
         </tr>
       </tbody>
     </table>
