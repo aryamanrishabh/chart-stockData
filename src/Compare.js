@@ -45,14 +45,49 @@ const Compare = () => {
     setClose2(timedatatwo[datetwo][p4]);
   }
 
-  useEffect(() => {
-    fetchStockData();
-  }, []);
+  //   let json1;
+  //   let json2;
+
+  //   function fetchStockData() {
+  //     Promise.all([
+  //       fetch(
+  //         `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock1}&apikey=AWS9D6C31M59ZV8H`
+  //       ),
+  //       fetch(
+  //         `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock2}&apikey=AWS9D6C31M59ZV8H`
+  //       ),
+  //     ])
+  //       .then(async ([a, b]) => {
+  //         json1 = await a.json();
+  //         json2 = await b.json();
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   }
+
+  //   const timedataone = json1["Time Series (Daily)"];
+  //   const dateone = Object.keys(timedataone)[0];
+  //   setOpen1(timedataone[dateone][p1]);
+  //   setHigh1(timedataone[dateone][p2]);
+  //   setLow1(timedataone[dateone][p3]);
+  //   setClose1(timedataone[dateone][p4]);
+
+  //   const timedatatwo = json2["Time Series (Daily)"];
+  //   const datetwo = Object.keys(timedatatwo)[0];
+  //   setOpen2(timedatatwo[datetwo][p1]);
+  //   setHigh2(timedatatwo[datetwo][p2]);
+  //   setLow2(timedatatwo[datetwo][p3]);
+  //   setClose2(timedatatwo[datetwo][p4]);
+
+  //   useEffect(() => {
+  //     fetchStockData();
+  //   }, []);
 
   return (
     <div>
       <form
-        className="m-5"
+        id="form"
         onSubmit={(e) => {
           e.preventDefault();
           fetchStockData();
@@ -63,7 +98,7 @@ const Compare = () => {
           value={stock1}
           placeholder="Enter stock symbol"
           onChange={(e) => {
-            setStock1(e.target.value);
+            setStock1(e.target.value.toUpperCase());
           }}
         />
         <input
@@ -71,12 +106,23 @@ const Compare = () => {
           value={stock2}
           placeholder="Enter stock symbol"
           onChange={(e) => {
-            setStock2(e.target.value);
+            setStock2(e.target.value.toUpperCase());
           }}
         />
-        <button>Compare</button>
+        <button className="btn btn-primary">Compare</button>
       </form>
-      <Table stock1={stock1} stock2={stock2} open1={open1} open2={open2} high1={high1} high2={high2} low1={low1} low2={low2} close1={close1} close2={close2} />
+      <Table
+        stock1={stock1}
+        stock2={stock2}
+        open1={open1}
+        open2={open2}
+        high1={high1}
+        high2={high2}
+        low1={low1}
+        low2={low2}
+        close1={close1}
+        close2={close2}
+      />
     </div>
   );
 };

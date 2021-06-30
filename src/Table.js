@@ -11,7 +11,7 @@ const Table = ({
   close2,
 }) => {
   return (
-    <table className="table">
+    <table className="table table-bordered" id="table">
       <thead className="thead-dark">
         <tr>
           <th scope="col"></th>
