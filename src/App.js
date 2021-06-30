@@ -1,10 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Navbar from "./Navbar";
-import SearchParams from "./SearchParams";
+import Compare from "./Compare";
 
 const App = () => {
-  return <Navbar />;
+  return (
+    <div>
+      <Navbar />
+      <Compare />
+    </div>
+  );
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));

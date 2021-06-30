@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Chart from "./Chart";
+import Description from "./Description";
 
 const Navbar = () => {
   const [symbol, setSymbol] = useState("");
@@ -53,12 +54,13 @@ const Navbar = () => {
                 className="nav-link"
                 href="#"
               >
-                DAX
+                SHOP
               </a>
             </li>
           </ul>
         </div>
       </nav>
+      <Description symbol={symbol} />
       <Chart symbol={symbol} />
     </div>
   );

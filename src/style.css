@@ -6,4 +6,9 @@
 }
 #chart {
   margin-top: 2%;
+  margin-bottom: 5%;
+}
+#description {
+  padding: 5%;
+  text-align: center;
 }
