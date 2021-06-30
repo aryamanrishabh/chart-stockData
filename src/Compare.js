@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
+import Table from "./Table";
 
 const Compare = () => {
+  const [comp, setComp] = useState(false);
+
   const [open1, setOpen1] = useState(0);
   const [close1, setClose1] = useState(0);
   const [high1, setHigh1] = useState(0);
@@ -42,6 +45,8 @@ const Compare = () => {
     setHigh2(timedatatwo[datetwo][p2]);
     setLow2(timedatatwo[datetwo][p3]);
     setClose2(timedatatwo[datetwo][p4]);
+
+    setComp(true);
   }
 
   useEffect(() => {
@@ -75,37 +80,7 @@ const Compare = () => {
         />
         <button>Compare</button>
       </form>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">{stock1}</th>
-            <th scope="col">{stock2}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Open</th>
-            <td>{open1}</td>
-            <td>{open2}</td>
-          </tr>
-          <tr>
-            <th scope="row">High</th>
-            <td>{high1}</td>
-            <td>{high2}</td>
-          </tr>
-          <tr>
-            <th scope="row">Low</th>
-            <td>{low1}</td>
-            <td>{low2}</td>
-          </tr>
-          <tr>
-            <th scope="row">Close</th>
-            <td>{close1}</td>
-            <td>{close2}</td>
-          </tr>
-        </tbody>
-      </table>
+      <Table stock1={stock1} stock2={stock2} open1={open1} open2={open2} high1={high1} high2={high2} low1={low1} low2={low2} close1={close1} close2={close2} />
     </div>
   );
 };

@@ -4,6 +4,12 @@
 .display-none {
   display: none;
 }
+#display-block {
+  display: block;
+}
+#display-none {
+  display: none;
+}
 #chart {
   margin-top: 2%;
   margin-bottom: 5%;
