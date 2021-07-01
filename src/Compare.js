@@ -6,11 +6,13 @@ const Compare = () => {
   const [close1, setClose1] = useState(0);
   const [high1, setHigh1] = useState(0);
   const [low1, setLow1] = useState(0);
+  const [stockname1, setStockname1] = useState("");
 
   const [open2, setOpen2] = useState(0);
   const [close2, setClose2] = useState(0);
   const [high2, setHigh2] = useState(0);
   const [low2, setLow2] = useState(0);
+  const [stockname2, setStockname2] = useState("");
 
   const [stock1, setStock1] = useState("");
   const [stock2, setStock2] = useState("");
@@ -39,6 +41,7 @@ const Compare = () => {
       const json1 = await res1.json();
       const timedataone = json1["Time Series (Daily)"];
       const dateone = Object.keys(timedataone)[0];
+      setStockname1(json1["Meta Data"]["2. Symbol"]);
       setOpen1(timedataone[dateone][p1]);
       setHigh1(timedataone[dateone][p2]);
       setLow1(timedataone[dateone][p3]);
@@ -47,6 +50,7 @@ const Compare = () => {
       const json2 = await res2.json();
       const timedatatwo = json2["Time Series (Daily)"];
       const datetwo = Object.keys(timedatatwo)[0];
+      setStockname2(json2["Meta Data"]["2. Symbol"]);
       setOpen2(timedatatwo[datetwo][p1]);
       setHigh2(timedatatwo[datetwo][p2]);
       setLow2(timedatatwo[datetwo][p3]);
@@ -131,8 +135,8 @@ const Compare = () => {
         <button className="btn btn-primary">Compare</button>
       </form>
       <Table
-        stock1={stock1}
-        stock2={stock2}
+        stock1={stockname1}
+        stock2={stockname2}
         open1={open1}
         open2={open2}
         high1={high1}

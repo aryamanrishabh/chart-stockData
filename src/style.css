@@ -39,3 +39,12 @@
   display: block;
   margin: 2% auto 0 auto;
 }
+.logo-card {
+  height: 220px;
+  width: 220px;
+  cursor: pointer;
+}
+.logo-card img {
+  width: 100%;
+  height: 180px;
+}
