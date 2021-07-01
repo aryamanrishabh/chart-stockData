@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Table from "./Table";
 
 const Compare = () => {
+  const [loading, setLoading] = useState(false);
+
   const [open1, setOpen1] = useState(0);
   const [close1, setClose1] = useState(0);
   const [high1, setHigh1] = useState(0);
@@ -22,14 +24,8 @@ const Compare = () => {
   const p3 = "3. low";
   const p4 = "4. close";
 
-  // const formatJsonData = (json) => {
-  //   const res = json;
-  //   const timedata = res["Time Series (Daily)"];
-  //   const date = Object.keys(timedata)[0];
-  //   return date;
-  // };
-
   async function fetchStockData() {
+    setLoading(true);
     try {
       const res1 = await fetch(
         `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock1}&apikey=AWS9D6C31M59ZV8H`
@@ -58,54 +54,8 @@ const Compare = () => {
     } catch (e) {
       alert("API response error, try clicking compare 2-3 times");
     }
+    setLoading(false);
   }
-
-  // const fetchStockData = () => {
-  //   fetch(
-  //     `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock1}&apikey=AWS9D6C31M59ZV8H`
-  //   )
-  //     .then((res) => {
-  //       if (res.Name) {
-  //         alert(
-  //           "API response invalid, please click compare 2-3 times to refresh"
-  //         );
-  //       }
-  //       return res.json();
-  //     })
-  //     .then((json) => {
-  //       const transformedJSON = formatJsonData(json);
-  //       setOpen1(transformedJSON[p1]);
-  //       setHigh1(transformedJSON[p2]);
-  //       setLow1(transformedJSON[p3]);
-  //       setClose1(transformedJSON[p4]);
-  //     })
-  //     .then(
-  //       fetch(
-  //         `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock2}&apikey=AWS9D6C31M59ZV8H`
-  //       )
-  //     )
-  //     .then((res) => {
-  //       if (res.Name) {
-  //         alert(
-  //           "API response invalid, please click compare 2-3 times to refresh"
-  //         );
-  //       }
-  //       return res.json();
-  //     })
-  //     .then((json) => {
-  //       const transformedJSON = formatJsonData(json);
-  //       setOpen2(transformedJSON[p1]);
-  //       setHigh2(transformedJSON[p2]);
-  //       setLow2(transformedJSON[p3]);
-  //       setClose2(transformedJSON[p4]);
-  //     })
-  //     .catch((err) => {
-  //       // alert(
-  //       //   "API response invalid, please click compare 2-3 times to refresh"
-  //       // );
-  //       console.log(err);
-  //     });
-  // };
 
   return (
     <div>
@@ -134,6 +84,10 @@ const Compare = () => {
         />
         <button className="btn btn-primary">Compare</button>
       </form>
+      <div
+        className="loader"
+        id={loading ? "display-block" : "display-none"}
+      ></div>
       <Table
         stock1={stockname1}
         stock2={stockname2}

@@ -10,7 +10,6 @@ import ReactDOM from "react-dom";
 import Navbar from "./Navbar";
 import Home from "./Home";
 import { CanvasJSChart } from "canvasjs-react-charts";
-import Chart from "./Chart";
 import Compare from "./Compare";
 
 const App = () => {
@@ -23,7 +22,7 @@ const App = () => {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/charts/:id" component={Dart} />
+        <Route path="/charts/:id" component={Chart} />
         <Route path="/compare">
           <Compare />
         </Route>
@@ -32,13 +31,15 @@ const App = () => {
   );
 };
 
-const Dart = () => {
+const Chart = () => {
   let params = useParams();
   const symbol = params.id.toUpperCase();
-  
+
   const [stockData, setStockData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   async function fetchStockData() {
+    setLoading(true);
     const res = await fetch(
       `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${params.id}&apikey=AWS9D6C31M59ZV8H`
     );
@@ -46,6 +47,7 @@ const Dart = () => {
     const json = await res.json();
 
     setStockData(formatStockData(json["Time Series (Daily)"]));
+    setLoading(false);
   }
 
   function formatStockData(stockData) {
@@ -69,6 +71,10 @@ const Dart = () => {
 
   return (
     <div className={params.id ? "display-block" : "display-none"} id="chart">
+      <div
+        className="loader"
+        id={loading ? "display-block" : "display-none"}
+      ></div>
       <CanvasJSChart
         options={{
           theme: "light2",

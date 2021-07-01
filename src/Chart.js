@@ -1,3 +1,5 @@
+//Template for trials
+
 import { useState, useEffect } from "react";
 import { CanvasJSChart } from "canvasjs-react-charts";
 import { useParams } from "react-router-dom";
@@ -122,6 +124,9 @@ const Chart = ({ symbol }) => {
           ],
         }}
       />
+      <div>
+        <p>If the loader doesn't disappear try again, probably api error</p>
+      </div>
     </div>
   );
 };
