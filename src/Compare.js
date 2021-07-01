@@ -20,69 +20,88 @@ const Compare = () => {
   const p3 = "3. low";
   const p4 = "4. close";
 
+  // const formatJsonData = (json) => {
+  //   const res = json;
+  //   const timedata = res["Time Series (Daily)"];
+  //   const date = Object.keys(timedata)[0];
+  //   return date;
+  // };
+
   async function fetchStockData() {
-    const res1 = await fetch(
-      `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock1}&apikey=AWS9D6C31M59ZV8H`
-    );
-    const res2 = await fetch(
-      `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock2}&apikey=AWS9D6C31M59ZV8H`
-    );
+    try {
+      const res1 = await fetch(
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock1}&apikey=AWS9D6C31M59ZV8H`
+      );
+      const res2 = await fetch(
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock2}&apikey=AWS9D6C31M59ZV8H`
+      );
 
-    const json1 = await res1.json();
-    const timedataone = json1["Time Series (Daily)"];
-    const dateone = Object.keys(timedataone)[0];
-    setOpen1(timedataone[dateone][p1]);
-    setHigh1(timedataone[dateone][p2]);
-    setLow1(timedataone[dateone][p3]);
-    setClose1(timedataone[dateone][p4]);
+      const json1 = await res1.json();
+      const timedataone = json1["Time Series (Daily)"];
+      const dateone = Object.keys(timedataone)[0];
+      setOpen1(timedataone[dateone][p1]);
+      setHigh1(timedataone[dateone][p2]);
+      setLow1(timedataone[dateone][p3]);
+      setClose1(timedataone[dateone][p4]);
 
-    const json2 = await res2.json();
-    const timedatatwo = json2["Time Series (Daily)"];
-    const datetwo = Object.keys(timedatatwo)[0];
-    setOpen2(timedatatwo[datetwo][p1]);
-    setHigh2(timedatatwo[datetwo][p2]);
-    setLow2(timedatatwo[datetwo][p3]);
-    setClose2(timedatatwo[datetwo][p4]);
+      const json2 = await res2.json();
+      const timedatatwo = json2["Time Series (Daily)"];
+      const datetwo = Object.keys(timedatatwo)[0];
+      setOpen2(timedatatwo[datetwo][p1]);
+      setHigh2(timedatatwo[datetwo][p2]);
+      setLow2(timedatatwo[datetwo][p3]);
+      setClose2(timedatatwo[datetwo][p4]);
+    } catch (e) {
+      alert("API response error, try clicking compare 2-3 times");
+    }
   }
 
-  //   let json1;
-  //   let json2;
-
-  //   function fetchStockData() {
-  //     Promise.all([
-  //       fetch(
-  //         `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock1}&apikey=AWS9D6C31M59ZV8H`
-  //       ),
+  // const fetchStockData = () => {
+  //   fetch(
+  //     `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock1}&apikey=AWS9D6C31M59ZV8H`
+  //   )
+  //     .then((res) => {
+  //       if (res.Name) {
+  //         alert(
+  //           "API response invalid, please click compare 2-3 times to refresh"
+  //         );
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((json) => {
+  //       const transformedJSON = formatJsonData(json);
+  //       setOpen1(transformedJSON[p1]);
+  //       setHigh1(transformedJSON[p2]);
+  //       setLow1(transformedJSON[p3]);
+  //       setClose1(transformedJSON[p4]);
+  //     })
+  //     .then(
   //       fetch(
   //         `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${stock2}&apikey=AWS9D6C31M59ZV8H`
-  //       ),
-  //     ])
-  //       .then(async ([a, b]) => {
-  //         json1 = await a.json();
-  //         json2 = await b.json();
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //   }
-
-  //   const timedataone = json1["Time Series (Daily)"];
-  //   const dateone = Object.keys(timedataone)[0];
-  //   setOpen1(timedataone[dateone][p1]);
-  //   setHigh1(timedataone[dateone][p2]);
-  //   setLow1(timedataone[dateone][p3]);
-  //   setClose1(timedataone[dateone][p4]);
-
-  //   const timedatatwo = json2["Time Series (Daily)"];
-  //   const datetwo = Object.keys(timedatatwo)[0];
-  //   setOpen2(timedatatwo[datetwo][p1]);
-  //   setHigh2(timedatatwo[datetwo][p2]);
-  //   setLow2(timedatatwo[datetwo][p3]);
-  //   setClose2(timedatatwo[datetwo][p4]);
-
-  //   useEffect(() => {
-  //     fetchStockData();
-  //   }, []);
+  //       )
+  //     )
+  //     .then((res) => {
+  //       if (res.Name) {
+  //         alert(
+  //           "API response invalid, please click compare 2-3 times to refresh"
+  //         );
+  //       }
+  //       return res.json();
+  //     })
+  //     .then((json) => {
+  //       const transformedJSON = formatJsonData(json);
+  //       setOpen2(transformedJSON[p1]);
+  //       setHigh2(transformedJSON[p2]);
+  //       setLow2(transformedJSON[p3]);
+  //       setClose2(transformedJSON[p4]);
+  //     })
+  //     .catch((err) => {
+  //       // alert(
+  //       //   "API response invalid, please click compare 2-3 times to refresh"
+  //       // );
+  //       console.log(err);
+  //     });
+  // };
 
   return (
     <div>
