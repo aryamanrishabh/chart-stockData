@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Chart from "./Chart";
 
 const Navbar = () => {
@@ -29,60 +29,60 @@ const Navbar = () => {
               Stocks
             </a>
             <div className="dropdown-menu">
-              <a
+              <Link
                 className="dropdown-item"
-                href="#"
+                to="/charts/ibm"
                 onClick={(e) => {
                   setSymbol(e.currentTarget.innerHTML);
                 }}
               >
                 IBM
-              </a>
-              <a
+              </Link>
+              <Link
                 className="dropdown-item"
-                href="#"
+                to="/charts/tsla"
                 onClick={(e) => {
                   setSymbol(e.currentTarget.innerHTML);
                 }}
               >
                 TSLA
-              </a>
-              <a
+              </Link>
+              <Link
                 className="dropdown-item"
-                href="#"
+                to="/charts/shop"
                 onClick={(e) => {
                   setSymbol(e.currentTarget.innerHTML);
                 }}
               >
                 SHOP
-              </a>
-              <a
+              </Link>
+              <Link
                 className="dropdown-item"
-                href="#"
+                to="/charts/tsco"
                 onClick={(e) => {
                   setSymbol(e.currentTarget.innerHTML);
                 }}
               >
                 TSCO
-              </a>
-              <a
+              </Link>
+              <Link
                 className="dropdown-item"
-                href="#"
+                to="/charts/reliance.bse"
                 onClick={(e) => {
                   setSymbol(e.currentTarget.innerHTML);
                 }}
               >
                 RELIANCE.BSE
-              </a>
-              <a
+              </Link>
+              <Link
                 className="dropdown-item"
-                href="#"
+                to="/charts/baba"
                 onClick={(e) => {
                   setSymbol(e.currentTarget.innerHTML);
                 }}
               >
                 BABA
-              </a>
+              </Link>
             </div>
           </li>
         </ul>
@@ -101,7 +101,7 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      <Chart symbol={symbol} />
+      {/* <Chart symbol={symbol} /> */}
     </div>
   );
 };
