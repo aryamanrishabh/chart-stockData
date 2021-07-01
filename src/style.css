@@ -66,3 +66,10 @@
     transform: rotate(360deg);
   }
 }
+
+footer {
+  width: 100%;
+  position: relative;
+  bottom: -20px;
+  text-align: center;
+}
