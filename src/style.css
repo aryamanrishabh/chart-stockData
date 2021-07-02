@@ -68,8 +68,8 @@
 }
 
 footer {
-  width: 100%;
-  position: relative;
-  bottom: -20px;
+  position: absolute;
+  bottom: 5px;
   text-align: center;
+  width: 100%;
 }
